@@ -92,7 +92,8 @@ app.get("/images/:filename", (req, res) => {
         err: "No files exist",
       });
     }
-    if (file.contentType == "image/jpeg" || file.contentType == "img/png") {
+    if (file.contentType == "image/jpeg" || file.contentType == "img/png" || file.contentType === 'application/pdf') {
+      console.log("file",file.contentType)
       //Read output to the browser
       const readStream = gfs.createReadStream(file.filename);
       readStream.pipe(res);
